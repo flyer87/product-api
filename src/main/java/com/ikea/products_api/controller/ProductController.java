@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -23,5 +24,9 @@ public class ProductController {
         return optionalProduct.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-
+    @GetMapping("/search")
+    public ResponseEntity<List<Product>> searchProducts(@RequestParam String q){
+        List<Product> foundProducts = productRepository.searchByName(q);
+        return ResponseEntity.ok(foundProducts);
+    }
 }
