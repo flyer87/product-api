@@ -73,4 +73,8 @@ public class ProductRepository {
         }
         return dist[sourceLength][targetLength];
     }
+
+    public List<Product> findAll(){
+        return products;
+    }
 }

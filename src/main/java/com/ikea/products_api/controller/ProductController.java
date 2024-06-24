@@ -29,4 +29,10 @@ public class ProductController {
         List<Product> foundProducts = productRepository.searchByName(q);
         return ResponseEntity.ok(foundProducts);
     }
+
+    @GetMapping
+    public ResponseEntity<List<Product>> getAllProducts(){
+        return ResponseEntity.ok(productRepository.findAll());
+    }
+
 }
